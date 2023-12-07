@@ -72,15 +72,22 @@ def part_two(data_map):
 
     seeds = data_map.pop('seeds')
 
-    print(seeds)
-    print(data_map)
+    for i in range(0,len(seeds),2):
+        #starting seeds range
+        start_range = (seeds[i], seeds[i + 1])
 
-    s = 0
-    while s < len(seeds):
-        current_range = (seeds[s], seeds[s + 1])
+        print(start_range)
 
-        print(current_range)
-        s += 2
+        next_ranges = [start_range]
+        for ran in next_ranges:
+            for m in data_map['seed-to-soil']:
+                r = ran[0] - m[1]
+                if r >= 0:
+                    if ran[1] <= m[2]:
+                        print(r)
+
+
+
     return
 
 f = open('./sample_input.txt', 'r')
